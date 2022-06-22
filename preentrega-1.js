@@ -78,26 +78,22 @@ function info() {
       aviso() {
         alert(
           `Has añadido a la lista a: (${this.nombre} ${this.apellido}, de edad: ${this.edad} años))`
-        );
+          );
+          
       }
     }
     let personas = [];
-    let invertir = [];
+   
 
     datos.forEach((dato) => {
       personas.push(new Dato(dato));
-      invertir.unshift(new Dato(dato));
     });
     personas.forEach((lista) => {
       lista.aviso();
     });
-    invertir.forEach((vuelta) => {
-      vuelta.aviso();
-    });
 
     console.log(datos);
     console.log(personas);
-    console.log(invertir);
   }
 }
 
