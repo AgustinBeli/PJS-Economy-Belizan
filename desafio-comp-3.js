@@ -1,5 +1,3 @@
-console.log(document.body);
-
 let span = document.getElementById("numero");
 
 console.log(span);
@@ -57,7 +55,7 @@ span.innerText = "N°3";
 // }
 
 //
-function info() {
+
 let ul = document.getElementById("persona");
 
 let nombre = prompt("nombre?");
@@ -70,6 +68,5 @@ for (const personas of persona) {
   li.innerHTML = personas;
   ul.append(li);
 }
-}
 
-info()
+
