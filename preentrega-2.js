@@ -1,49 +1,44 @@
-let nombreUsuario;
-let apellidoUsuario;
-let edadUsuario;
+// obtengo los datos del usuario
+let user = localStorage.getItem('user');
+let pass = localStorage.getItem('pass');
 
-const saludoEstudiantes = document.getElementById("saludoUsuario");
-const formulario = document.getElementById("formulario");
-const nombre = document.getElementById("nombre");
-const apellido = document.getElementById("apellido");
-const edad = document.getElementById("edad");
-const contFormulario = document.getElementById("contFormulario");
-const contenido = document.getElementById("contenido");
-// const formu = document.getElementById("formu");
+const form = document.getElementById("form");
+const usuario = document.getElementById("usuario");
+const contraseña = document.getElementById("contraseña");
+const contForm = document.getElementById("contForm");
+const saludo = document.getElementById("saludo");
 
 const ocultar = () => {
-  contFormulario.style.display = "none";
-  contenido.innerHTML = `Hola ${nombreUsuario} ${apellidoUsuario}`;
-};
+  contForm.style.display = "none";
+  saludo.innerHTML = `Hola ${user}`;
+}
 
-formulario.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  nombreUsuario = nombre.value;
-  apellidoUsuario = apellido.value;
-  edadUsuario = edad.value;
+  user = usuario.value;
+  pass = contraseña.value;
 
-  localStorage.setItem("nombreUsuario", nombre.value);
-  localStorage.setItem("apellidoUsuario", apellido.value);
-  localStorage.setItem("edadUsuario", edad.value);
+  localStorage.setItem("user", usuario.value);
+  localStorage.setItem("pass", contraseña.value);
 
   ocultar();
 });
 
-if (!!nombreUsuario && !!apellidoUsuario && !!edadUsuario) {
+if (!!user && !!pass) {
   ocultar();
 }
 
-// //OBTENGO LOS DATOS
-// const sueldo = document.getElementById("sueldo").value;
-// const propina = document.getElementById("propina").value;
-// const gasto = document.getElementById("gasto").value;
-// const formu = document.getElementById("formu");
-// const total = document.getElementById("total");
-// //RESUELVO
-// let ingresos = sueldo + propina - gasto;
-// let resultado = ingresos - gasto;
-// //MANDO AL HTML
-// formu.onsubmit = (e) => {
-//   e.preventDefault();
-//   total.innerHTML = `resultado: ${resultado}`;
-// };
+//OBTENGO LOS DATOS
+const sueldo = document.getElementById("sueldo").value;
+const propina = document.getElementById("propina").value;
+const gasto = document.getElementById("gasto").value;
+const formu = document.getElementById("formu");
+const total = document.getElementById("total");
+//RESUELVO
+let ingresos = sueldo + propina;
+let resultado = ingresos - gasto;
+//MANDO AL HTML
+formu.onsubmit = (e) => {
+  e.preventDefault();
+  total.innerHTML = `resultado: ${resultado}`;
+};
