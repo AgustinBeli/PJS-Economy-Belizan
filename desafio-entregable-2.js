@@ -19,6 +19,8 @@
 // let titulo = document.getElementById("desafio");
 // titulo.innerHTML = "¡Desafio Entregable";
 
+// AGREGO MI TITULO
+
 const desafio = document.getElementById("desafio");
 const numero = document.getElementById("numero");
 const conjunto = document.getElementById("conjunto");
@@ -27,11 +29,10 @@ const titulo = document.getElementById("titulo");
 conjunto.onsubmit = (e) => {
     e.preventDefault();
     titulo.innerHTML = `${desafio.value}${numero.value}`;
-    
 }
 
 
-// FORMULARIO
+// FORMULARIO EJEMPLO
 
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");

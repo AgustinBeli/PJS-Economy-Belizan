@@ -1,6 +1,10 @@
+const num1 = document.getElementById("num1");
+const num2 = document.getElementById("num2");
+
+
 // Funciones:
 const Dinero = () => {
-  let cantDinero = Number(prompt("Cuantas operaciones deseas hacer?"));
+  let cantDinero = num1.innerHTML;
   for (i = 1; i <= cantDinero; i++) {
     let aporte = Number(prompt(`Importe N° ${i}`));
     sumarIngresos = sumarIngresos + aporte;

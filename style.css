@@ -1,5 +1,12 @@
 *{
-    background-color:antiquewhite ;
+    background-color:#101010 ;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    text-transform: lowercase;
+    color: bisque;
+}
+#uno {
+    background-color: white;
 }
 
 #titulo {
@@ -7,3 +14,10 @@
     flex-direction: row;
     gap: 15px;
 }
+
+#resultados {
+    display: flex;
+    gap: 15px;
+}
+
+    
