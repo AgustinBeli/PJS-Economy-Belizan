@@ -1,23 +1,51 @@
 *{
-    background-color:#101010 ;
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+    background-color: #35363A;
+    color: white;
+}
+#esquema {
+
     font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    text-transform: lowercase;
-    color: bisque;
-}
-#uno {
-    background-color: white;
-}
-
-#titulo {
+    font-size: 0.9vw;
     display: flex;
-    flex-direction: row;
-    gap: 15px;
-}
-
-#resultados {
-    display: flex;
-    gap: 15px;
-}
-
+    gap: 5vw;
+    justify-content: center;
     
+}
+#titulo {
+    background-color: white;
+    color: #35363A;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+}
+.formu {
+    border: solid #35363A 20px;
+}
+#description, #amount {
+    background: none;
+    border: none;
+    border-bottom: solid white 1px;
+}
+#tabla {
+    text-align: center;
+}
+th, td {
+    text-align: center;
+    padding: 5px;
+    border: solid black 2px ;
+    background: black;
+}
+th {
+    width: 10vw;
+}
+button {    
+    background-color: none;
+    background: none;
+    color: aliceblue;
+    border: none;
+}
