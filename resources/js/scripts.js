@@ -4,46 +4,9 @@ formulario.addEventListener("submit", function (e) {
   e.preventDefault();
   let datosFormulario = new FormData(formulario);
   let info = objeto(datosFormulario);
-  if (validando(info)) {
-    guardar(info);
-    agregarDatos(info);
-    formulario.reset();
-  } else {
-    console.log(":c")
-  };
+  guardar(info);
+  agregarDatos(info);
 });
-
-function validando(info) {
-  let validar = true;
-  if (!info["type"]) {
-    alert("Debes seleccionar el tipo de operación");
-    validar = false;
-  }
-  if (!info["spent"]) {
-    alert("Debes seleccionar el tipo de gasto");
-    validar = false;
-  }
-  if (!info["metod"]) {
-    alert("Debes seleccionar el metodo de pago");
-    validar = false;
-  }
-  if (!info["Amount"]) {
-    alert("Debes colocar un monto");
-    validar = false;
-  } else if (info["Amount"] < 0) {
-    alert("No puedes poner numeros negativos");
-    validar = false;
-  }
-  if (!info["Description"]) {
-    alert("Debes colocar una descripción");
-    validar = false;
-  }
-  if (!info["Category"]) {
-    alert("Debes seleccionar una categoria");
-    validar = false;
-  }
-  return validar;
-}
 
 document.addEventListener("DOMContentLoaded", function (e) {
   let recorrer = JSON.parse(localStorage.getItem("datos"));
