@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Quicksand&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css"
+        integrity="sha512-koDUjGvRZrcni2jJFT9I3VRYY0PWNKtr1Wj9U36eLhcFgBm36KV11yTi4p2H3HwUMirxZ+dMpKeUuRjYOFjeDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.css"
+        integrity="sha512-TVNZcv0J8VIKwc9PuINGUaXpAtIvvfc8bO1frc8Xl7N4mWxH8mCCjubLdlhi6xYJKFyZrYEqEXQkoiOvglmtZA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./resources/css/style.css">
+    <title>Mi economia</title>
+</head>
+
+<body>
+    <h1 id="titulo">MI ECONOMIA</h1>
+    <div id="esquema" class="row">
+        <div id="formu" class="col l3 s12">
+            <div class="col l12">
+                <form id="formulario">
+                    <div class="operacion">
+                        Tipo de Operación:
+                        <p>
+                            <label for="type1">
+                                <input name="type" id="type1" type="radio" value="Ingreso" checked />
+                                <span>Ingreso</span>
+                            </label>
+                            <label for="type2">
+                                <input name="type" id="type1" type="radio" value="Egreso" checked />
+                                <span>Egreso</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="gasto">
+                        Tipo de Gasto
+                        <p>
+                            <label for="spent1">
+                                <input name="spent" id="spent1" type="radio" value="fijo" checked />
+                                <span>Fijo</span>
+                            </label>
+                            <label for="spent2">
+                                <input name="spent" id="spent2" type="radio" value="Variable" checked />
+                                <span>Variable</span>
+                            </label>
+                            <label for="spent3">
+                                <input name="spent" id="spent3" type="radio" value="Ocasional" checked />
+                                <span>Ocasional</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="pago">
+                        Medio de Pago:
+                        <p>
+                            <label for="metod1">
+                                <input name="metod" id="metod1" type="radio" value="efectivo" checked />
+                                <span>Efectivo</span>
+                            </label>
+                            <label for="metod2">
+                                <input name="metod" id="metod2" type="radio" value="tarjeta" checked />
+                                <span>Tarjeta</span>
+                            </label>
+                            <label for="metod3">
+                                <input name="metod" id="metod3" type="radio" value="mercadopago" checked />
+                                <span>Mercadopago</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="cantidad input-field">
+                        <label for="amount">Importe:</label>
+                        <input name="amount" id="amount" type="number" class="validate">
+                    </div>
+                    <div class="informacion input-field">
+                        <label for="description">Descripción:</label>
+                        <input name="description" id="description" type="text" class="validate">
+                    </div>
+                    <label for="category">Categoria:</label>
+                    <select name="category" id="category" class="browser-default">
+                        <option value="SELECCIONAR">SELECCIONAR</option>
+                        <option value="SERVICIO">SERVICIO</option>
+                        <option value="COMIDA">COMIDA</option>
+                        <option value="ROPA">ROPA</option>
+                        <option value="ELECTRO">ELECTRO</option>
+                        <option value="HIGIENE">HIGIENE</option>
+                        <option value="OCIO">OCIO</option>
+                        <option value="OTROS">OTROS</option>
+                        <option value="SUELDO">SUELDO</option>
+                        <option value="PROPINA">PROPINA</option>
+                        <option value="INVERSIÓN">INVERSIÓN</option>
+                    </select>
+                    <div class="añadir">
+                        <input type="submit">
+                        <!-- <button class="btn waves-effect waves-light" type="submit" name="action">+</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="tabla" class="col l8 s12 offset-l1">
+            <h3>HISTORIAL</h3>
+            <div>
+                <table id="historial">
+                    <tr>
+                        <th>TIPO DE OPERACION</th>
+                        <th>MEDIO DE PAGO</th>
+                        <th>IMPORTE</th>
+                        <th>TIPO DE GASTO</th>
+                        <th>CATEGORIA</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"
+        integrity="sha512-zCHGovd9kHtyOdCLYmXApVFPtXQjZNyjHGU6DKPKR1HnhiSnVc71r1x7bpahdGw7mOKbz6oZ1k7/gbfRNp50ag=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.js"
+        integrity="sha512-LSynsHcISjg2FJcfjq+IqrgsAAdo8A6t35zA/Fys/mZWuaiTS9a8oB5IXFW15oAJF/9KA5OWUx8RwWd9I4RVrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./resources/js/scripts.js"></script>
+</body>
+
+</html>
