@@ -3,11 +3,6 @@ html {
     color: white;
 }
 
-#esquema {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9vw;
-}
-
 #titulo {
     background-color: white;
     color: #35363A;
@@ -16,9 +11,18 @@ html {
     text-align: center;
 }
 
+#esquema {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9vw;
+}
+
 #description,
 #amount {
     border-bottom: solid white 1px;
+}
+
+.añadir {
+    margin-top: 10px;
 }
 
 #tabla {
@@ -37,6 +41,6 @@ th {
     width: 10vw;
 }
 
-.añadir {
-    margin-top: 10px;
+button {
+    background: none;
 }
