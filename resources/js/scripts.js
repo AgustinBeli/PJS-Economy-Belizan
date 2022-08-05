@@ -45,22 +45,11 @@ function validando(info) {
     return validar;
 }
 
-// document.addEventListener("DOMContentLoaded", function (e) {
-//     let recorrer = JSON.parse(localStorage.getItem("datos"));
-//     recorrer.forEach(function (recorriendo) {
-//         agregarDatos(recorriendo)
-//     }
-//     )
-// });
-
 document.addEventListener("DOMContentLoaded", function (e) {
-    // draw_category();
-    fetch("http://localhost:3000/transactions")
-        .then((res) => res.json())
-        .then((data) => {
-            mostrarEnPantallaArrayDeTransaccion(data);
-            todasLasTransacciones = data;
-        });
+    fetch("http://localhost:3000/transactions").then(res => res.json()).then(data => {
+        mostrarEnPantallaArrayDeTransaccion(data);
+        todasLasTransacciones = data;
+    });
 });
 
 function mostrarEnPantallaArrayDeTransaccion(recorrer) {
@@ -146,8 +135,11 @@ function deshacer(codigo) {
 }
 
 function guardar(info) {
-    let operaciones = JSON.parse(localStorage.getItem("datos")) || [];
-    operaciones.push(info);
-    let operacionJSON = JSON.stringify(operaciones);
-    localStorage.setItem("datos", operacionJSON);
+    fetch("http://localhost:3000/transactions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(info),
+    })
 }
