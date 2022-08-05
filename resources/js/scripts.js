@@ -54,7 +54,7 @@ function validando(info) {
 // });
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    draw_category();
+    // draw_category();
     fetch("http://localhost:3000/transactions")
         .then((res) => res.json())
         .then((data) => {

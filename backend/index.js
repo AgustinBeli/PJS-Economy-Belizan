@@ -1,8 +1,8 @@
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 
 const port = 3000;
 
@@ -32,6 +32,8 @@ const transactions = [
         "description": "Claro",
         "codigo": 12
     }];
+
+console.log(transactions)
 
 app.get("/", (req, res) => {
     res.send(`Ok, ingresaron a localhost! ${port}`);
