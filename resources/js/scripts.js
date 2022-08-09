@@ -1,14 +1,14 @@
 const formulario = document.getElementById("formulario");
 
-var todasLasTransacciones;
+var todasMisOperaciones;
 
 formulario.addEventListener("submit", function (e) {
     e.preventDefault();
     let datosFormulario = new FormData(formulario);
-    let info = objeto(datosFormulario);
+    let info = operacionObjeto(datosFormulario);
     if (validando(info)) {
-        guardar(info);
-        agregarDatos(info);
+        guardarJSON(info);
+        agregarOperaciones(info);
         formulario.reset();
     } else { }
 });
@@ -46,38 +46,37 @@ function validando(info) {
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    fetch("http://localhost:3000/transactions").then(res => res.json()).then(data => {
-        mostrarEnPantallaArrayDeTransaccion(data);
-        todasLasTransacciones = data;
-    });
+    fetch("http://localhost:3000/operaciones")
+        .then(res => res.json())
+        .then(data => { mostrarOperaciones(data); todasMisOperaciones = data; });
 });
 
-function mostrarEnPantallaArrayDeTransaccion(recorrer) {
+function mostrarOperaciones(recorrer) {
     recorrer.forEach(function (arrayElement) {
-        agregarDatos(arrayElement);
+        agregarOperaciones(arrayElement);
     });
 }
 
-function getTransactionsFromApi() {
-    const allTransactions = fetch("http://localhost:3000/transactions");
-    return allTransactions;
+function obtenerOperacionesAPI() {
+    const todasLasOperaciones = fetch("http://localhost:3000/operaciones");
+    return todasLasOperaciones;
 }
 
-function agregarCodigo() {
+function indicarCodigo() {
     let ultimoCodigo = localStorage.getItem("ultimoCodigo") || "-1";
     let nuevoCodigo = JSON.parse(ultimoCodigo) + 1;
     localStorage.setItem("ultimoCodigo", JSON.stringify(nuevoCodigo));
     return nuevoCodigo;
 }
 
-function objeto(datosFormulario) {
+function operacionObjeto(datosFormulario) {
     let type = datosFormulario.get("type");
     let metod = datosFormulario.get("metod");
     let amount = datosFormulario.get("amount");
     let spent = datosFormulario.get("spent");
     let category = datosFormulario.get("category");
     let description = datosFormulario.get("description");
-    let codigo = agregarCodigo();
+    let codigo = indicarCodigo();
     return {
         type: type,
         metod: metod,
@@ -89,7 +88,7 @@ function objeto(datosFormulario) {
     };
 }
 
-function agregarDatos(info) {
+function agregarOperaciones(info) {
     let historial = document.getElementById("historial");
 
     let nuevaFila = historial.insertRow(-1);
@@ -122,11 +121,11 @@ function agregarDatos(info) {
         let celda = e.target.parentNode.parentNode;
         let codigo = celda.getAttribute("data-codigo");
         celda.remove();
-        deshacer(codigo);
+        eliminarOperacion(codigo);
     });
 }
 
-function deshacer(codigo) {
+function eliminarOperacion(codigo) {
     let recorrer = JSON.parse(localStorage.getItem("datos"));
     let recorrerLocal = recorrer.findIndex((element) => element.codigo == codigo);
     recorrer.splice(recorrerLocal, 1);
@@ -134,8 +133,8 @@ function deshacer(codigo) {
     localStorage.setItem("datos", operacionJSON);
 }
 
-function guardar(info) {
-    fetch("http://localhost:3000/transactions", {
+function guardarJSON(info) {
+    fetch("http://localhost:3000/operaciones", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

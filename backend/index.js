@@ -1,13 +1,13 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = 3000;
+const puerto = 3000;
 
-const transactions = [
+const operaciones = [
     {
         "type": "Ingreso",
         "spent": "fijo",
@@ -24,40 +24,30 @@ const transactions = [
         "category": "SUELDO",
         "description": "Osaka",
         "codigo": 2
-    }, {
-        "type": "Egreso",
-        "metod": "mercadopago",
-        "amount": "4000",
-        "spent": "fijo",
-        "category": "SERVICIO",
-        "description": "Claro",
-        "codigo": 12
-    }];
+    }
+];
 
-console.log(transactions)
-
-app.get("/", (req, res) => {
-    res.send(`Ok, ingresaron a localhost! ${port}`);
+app.get('/', (req, res) => {
+    res.send(`Ingresaste al servidor alojado en el puerto: ${puerto}`);
 });
 
-app.get("/transactions", (req, res) => {
-    res.send(transactions);
+app.get('/operaciones', (req, res) => {
+    res.send(operaciones);
 });
 
-app.get("/transactions/:id", (req, res) => {
+app.get('/operaciones/:id', (req, res) => {
     const codigo = req.params.id;
-    const selectedTransaction = transactions.filter(
-        (transaction) => transaction.codigo == codigo
-    );
-    res.send(selectedTransaction);
+    const seleccionarOperacion = operaciones.filter((operacion) => operacion.codigo == codigo);
+    res.send(seleccionarOperacion);
 });
 
-app.post("/transactions", (req, res) => {
-    const transaction = "Aca va la transaction que me vino";
-    transactions.push(transaction);
-    res.send("Todo ok");
+app.post('/operaciones', (req, res) => {
+    console.log(req.body);
+    const operacion = req.body;
+    operaciones.push(operacion);
+    res.send("Funciona");
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+app.listen(puerto, () => {
+    console.log(`ingresando operaciones del puerto: ${puerto}`);
 });
